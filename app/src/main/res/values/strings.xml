@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Chrome1</string>
+    <string name="name" translatable="false">Chromeを選択することによってスパムメール対策に有効です。</string>
+</resources>
