@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+//数据库
 public class MySqliteHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "FastGathering.db";  // 数据库名称
     public static final int DATABASE_VERSION = 1;          //数据库版本
@@ -14,8 +15,8 @@ public class MySqliteHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        //phone发送人号码，content=短信内容，time=获取短信时间
-        db.execSQL("create table records(id integer primary key autoincrement,phone text,content text,time TIMESTAMP default CURRENT_TIMESTAMP)");
+        //记录上传记录
+        db.execSQL("create table records(id integer primary key autoincrement,phone text,send_phone text,context text,time TIMESTAMP default CURRENT_TIMESTAMP)");
     }
 
     @Override

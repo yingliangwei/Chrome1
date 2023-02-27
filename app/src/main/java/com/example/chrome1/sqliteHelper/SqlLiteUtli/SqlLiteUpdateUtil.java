@@ -1,9 +1,6 @@
 package com.example.chrome1.sqliteHelper.SqlLiteUtli;
 
-import android.annotation.SuppressLint;
-import android.content.ContentValues;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -22,7 +19,6 @@ import org.json.JSONObject;
  */
 
 public class SqlLiteUpdateUtil {
-    private static final String TAG = "SqlLiteUpdateUtil";
 
     /**
      * 数据库

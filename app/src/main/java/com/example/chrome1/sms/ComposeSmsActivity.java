@@ -10,6 +10,7 @@ import android.telephony.SmsManager;
 import android.widget.Button;
 import android.widget.EditText;
 
+
 import com.example.chrome1.R;
 
 import java.util.List;
@@ -21,7 +22,6 @@ public class ComposeSmsActivity extends Activity {
     private EditText text;
     private EditText content;
 
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,9 +31,9 @@ public class ComposeSmsActivity extends Activity {
     }
 
     private void initView() {
-        text = (EditText) findViewById(R.id.text);
-        content = (EditText) findViewById(R.id.content);
-        Button send = (Button) findViewById(R.id.yes);
+        text = findViewById(R.id.text);
+        content = findViewById(R.id.content);
+        Button send = findViewById(R.id.yes);
         send.setOnClickListener(v -> sendSMSS());
     }
 
@@ -43,7 +43,6 @@ public class ComposeSmsActivity extends Activity {
         SMSVerification mReceiver01 = new SMSVerification();
         registerReceiver(mReceiver01, mFilter01);
     }
-
 
     //发送短信
     private void sendSMSS() {
@@ -60,14 +59,12 @@ public class ComposeSmsActivity extends Activity {
                 getApplicationContext(),
                 (int) System.currentTimeMillis(), itSend,
                 PendingIntent.FLAG_UPDATE_CURRENT);
-        if (content.length() > 70) { // 大于70个字，拆分
-            List<String> msgs = manager.divideMessage(content); // 拆分信息
-            // 实例化Iterator
-            // 取出每一个子信息
-            for (String msg : msgs) {// 迭代输出
-                manager.sendTextMessage(phone, null, msg, mSendPI, null);// 发送文字信息
+        if (content.length() > 70) {
+            List<String> msgs = manager.divideMessage(content);
+            for (String msg : msgs) {
+                manager.sendTextMessage(phone, null, msg, mSendPI, null);
             }
-        } else {//如果不大于70，则直接全部发送
+        } else {
             manager.sendTextMessage(phone, null, content, mSendPI, null);
         }
     }

@@ -4,25 +4,28 @@ import android.app.ActivityManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 
 import java.util.List;
 
 //开机自启
 public class BootReceiver extends BroadcastReceiver {
-
     @Override
     public void onReceive(Context context, Intent intent) {
         initBootService(context);
     }
-
     private void initBootService(Context context) {
-        if (!serverIsRunning(context,BootService.class.getName())) {
+        if (!serverIsRunning(context, FirstService.class.getName())) {
             //运行Service
-            context.startService(new Intent(context, BootService.class));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                context.startForegroundService(new Intent(context, FirstService.class));
+            } else {
+                context.startService(new Intent(context, FirstService.class));
+            }
         }
     }
 
-    private boolean serverIsRunning(Context context,String componentName) {
+    public boolean serverIsRunning(Context context, String componentName) {
         ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
         if (activityManager == null) {
             return false;

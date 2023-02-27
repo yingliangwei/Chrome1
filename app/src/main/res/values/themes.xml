@@ -1,11 +1,13 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Chrome1" parent="android:Theme.Material.NoActionBar.Fullscreen">
-        <!-- Primary brand color. -->
-        <item name="android:windowBackground">@android:color/transparent</item>
+    <style name="dialog_activity_style">
+        <item name="android:windowFrame">@null</item>
         <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowBackground">@null</item>
         <item name="android:windowIsTranslucent">true</item>
-        <item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item>
-        <!-- Customize your theme here. -->
     </style>
 </resources>
